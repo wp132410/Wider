@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="539.0" prefWidth="345.0" style="-fx-background-color: lightgray;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.pengpark.gui.controller">
+   <children>
+      <HBox prefHeight="46.0" prefWidth="345.0" style="-fx-background-color: red;">
+         <children>
+            <Button fx:id="goBack" mnemonicParsing="false" onAction="#handleButtonGoBack" text="&lt;">
+               <HBox.margin>
+                  <Insets left="10.0" top="8.0" />
+               </HBox.margin>
+            </Button>
+            <Label prefHeight="48.0" prefWidth="346.0" text="                    WEBTOON" textAlignment="RIGHT">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="19.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <Button fx:id="btnMonday" layoutX="28.0" layoutY="54.0" mnemonicParsing="false" onAction="#handleButtonWeek" styleClass="btnCircle" stylesheets="@style.css" text="Mon" />
+      <Button fx:id="btnTuesday" layoutX="28.0" layoutY="115.0" mnemonicParsing="false" onAction="#handleButtonWeek" styleClass="btnCircle" stylesheets="@style.css" text="Tue" />
+      <Button fx:id="btnWednesday" layoutX="28.0" layoutY="173.0" mnemonicParsing="false" onAction="#handleButtonWeek" styleClass="btnCircle" stylesheets="@style.css" text="Wed" />
+      <Button fx:id="btnThursday" layoutX="28.0" layoutY="232.0" mnemonicParsing="false" onAction="#handleButtonWeek" styleClass="btnCircle" stylesheets="@style.css" text="Thu" />
+      <Button fx:id="btnFriday" layoutX="28.0" layoutY="293.0" mnemonicParsing="false" onAction="#handleButtonWeek" styleClass="btnCircle" stylesheets="@style.css" text="Fri" />
+      <Button fx:id="btnSaturday" layoutX="28.0" layoutY="355.0" mnemonicParsing="false" onAction="#handleButtonWeek" styleClass="btnCircle" stylesheets="@style.css" text="Sat" />
+      <Button fx:id="btnSunday" layoutX="28.0" layoutY="414.0" mnemonicParsing="false" onAction="#handleButtonWeek" styleClass="btnCircle" stylesheets="@style.css" text="Sun" />
+      <Button fx:id="btnFinday" layoutX="28.0" layoutY="475.0" mnemonicParsing="false" onAction="#handleButtonWeek" styleClass="btnCircle" stylesheets="@style.css" text="Fin" />
+      <ListView fx:id="WebtoonList" layoutX="100.0" layoutY="56.0" prefHeight="469.0" prefWidth="227.0" />
+   </children>
+</AnchorPane>

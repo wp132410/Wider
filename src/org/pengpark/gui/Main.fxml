@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: lightgray;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.pengpark.gui.controller">
+   <children>
+      <Label prefHeight="51.0" prefWidth="600.0" style="-fx-background-color: orange;" text="                                                     MENU">
+         <font>
+            <Font name="Microsoft Sans Serif" size="19.0" />
+         </font>
+      </Label>
+      <Button layoutX="491.0" layoutY="14.0" mnemonicParsing="false" text="ㅡ" />
+      <Button layoutX="538.0" layoutY="14.0" mnemonicParsing="false" text="exit" />
+      <Circle fill="WHITE" layoutX="300.0" layoutY="189.0" radius="58.0" stroke="WHITE" strokeType="INSIDE" />
+      <Button fx:id="btnWebtoon" layoutX="444.0" layoutY="274.0" mnemonicParsing="false" onAction="#handleButtonAction" text="webtoon" />
+      <Circle fill="WHITE" layoutX="128.0" layoutY="189.0" radius="58.0" stroke="WHITE" strokeType="INSIDE" />
+      <Circle fill="WHITE" layoutX="480.0" layoutY="189.0" radius="58.0" stroke="WHITE" strokeType="INSIDE" />
+      <Button fx:id="btnNews" layoutX="103.0" layoutY="274.0" mnemonicParsing="false" onAction="#handleButtonAction" text="news" />
+      <Button fx:id="btnWeather" layoutX="266.0" layoutY="274.0" mnemonicParsing="false" onAction="#handleButtonAction" text="weather" />
+   </children>
+</AnchorPane>

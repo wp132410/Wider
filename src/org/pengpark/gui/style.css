@@ -1,0 +1,6 @@
+.btnCircle {
+    -fx-background-radius: 25px;
+    -fx-min-width: 50px;
+    -fx-min-height: 50px;
+    /*-fx-background-color: lavender;*/
+}
