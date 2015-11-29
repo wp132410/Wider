@@ -6,10 +6,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+
 /**
  * Created by pengpark on 2015. 11. 28..
  */
-public class main extends Application {
+public class main extends Application{
     public static void main(String[] args) {
         launch(args);
     }

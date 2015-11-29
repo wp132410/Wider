@@ -1,4 +1,4 @@
-package org.pengpark.main;
+package org.pengpark.Data;
 
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
@@ -28,6 +28,12 @@ public class Crawling {
         this.URL = URL;
     }
 
+    public static String getGeoLocationURL() {
+        return GeoLocationURL;
+    }
+
+    // Mac주소와 기본적인 AP정보를 가지고 GMap Geolocation API를 사용하기 위해 추가 정보 설정
+
     public List<Map<String, Object>> setGeoLocation() throws SocketException, UnknownHostException {
             String macAddress = getMacAddress();
 
@@ -51,6 +57,8 @@ public class Crawling {
             return wifipoints;
     }
 
+    // 사용자 AP의 MAC주소를 가져온다
+
     public String getMacAddress() throws UnknownHostException, SocketException {
         InetAddress ia = InetAddress.getLocalHost();
         NetworkInterface network = NetworkInterface.getByInetAddress(ia);
@@ -66,7 +74,7 @@ public class Crawling {
         return sb.toString();
     }
 
-
+    // URL을 통해 웹사이트 문서를 긁어온다
 
     public Document getData(String url) throws IOException {
         if (url == null) {
@@ -82,11 +90,4 @@ public class Crawling {
         return conn.get();
     }
 
-    public static String getGeoLocationURL() {
-        return GeoLocationURL;
-    }
-
-    public void setURL(String URL) {
-        this.URL = URL;
-    }
 }

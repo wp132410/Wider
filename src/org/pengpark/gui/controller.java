@@ -12,8 +12,8 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import org.jsoup.nodes.Document;
-import org.pengpark.main.Crawling;
-import org.pengpark.main.Webtoon;
+import org.pengpark.Data.Crawling;
+import org.pengpark.Data.Webtoon;
 
 
 import java.io.IOException;
@@ -94,7 +94,6 @@ public class controller {
 
                         Document doc = c.getData(WebtoonURL);
                         List<String> webtoonList = Webtoon.GetWebtoonList(doc);
-
 
 
                         ObservableList<String> items = FXCollections.observableArrayList(webtoonList);

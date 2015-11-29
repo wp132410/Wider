@@ -1,4 +1,4 @@
-package org.pengpark.main;
+package org.pengpark.Data;
 
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
@@ -24,7 +24,11 @@ public class News {
 
     private Map<Integer, String> NewsResult;
 
-    public News(String title, String url) {
+
+    // Highlight에서 키워드를 가져오면
+    // News에서 url과 title을 받아와
+    // 해당 url의 핫한 뉴스를 가져온다
+    public News(String url, String title) {
         this.title = title;
         this.url = url;
     }

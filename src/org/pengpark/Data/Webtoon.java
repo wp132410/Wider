@@ -1,10 +1,9 @@
-package org.pengpark.main;
+package org.pengpark.Data;
 
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import javax.xml.soap.Detail;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -19,6 +18,8 @@ import java.util.Map;
 public class Webtoon {
     private static Map<String, String> data;
 
+
+    // 월 ~ 완결 까지의 웹툰 리스트를 가져온다
     public static List<String> GetWebtoonList(Document doc) {
         data = new HashMap<>();
         List<String> datas;

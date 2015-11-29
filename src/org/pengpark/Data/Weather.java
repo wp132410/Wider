@@ -1,14 +1,12 @@
-package org.pengpark.main;
+package org.pengpark.Data;
 
-import org.json.simple.JSONArray;
+import com.sun.org.apache.xpath.internal.compiler.Keywords;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.*;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
@@ -18,19 +16,33 @@ import java.net.URLConnection;
 public class Weather {
     private String woeid;
 
-    public static void main(String[] args) throws IOException, ParseException {
-        Weather weather = new Weather();
-        weather.GetWoeidNumber();
-        System.out.println(weather.GetWoeidNumber());
-        System.out.println(weather.getWeather());
-    }
 
+    // PointsToGeo를 통해 받은 위치 정보를
+    // woeid를 리턴받는다
+    // 이 것을 이용하여 Yahoo Weather API에서 해당 위치의 날씨 가져온다
     public String GetWoeidNumber() throws IOException, ParseException {
         Crawling c = new Crawling();
 
         JSONObject jsonObject = (JSONObject) Geolocation.PointsToGeo().get(0);
         String keywords = jsonObject.get("formatted_address").toString().replace(",", "%20");
-        String url = "http://woeid.rosselliot.co.nz/lookup/" + keywords;
+
+        String url = "http://woeid.rosselliot.co.nz/lookup/";
+        String removeKeyword;
+        String changed;
+
+        if (keywords.contains("(")) {
+            int start = keywords.indexOf("(");
+            int end = keywords.indexOf(")") + 1;
+
+            removeKeyword = keywords.substring(start, end);
+            changed = keywords.replace(removeKeyword, "");
+            url += changed;
+        }
+        else {
+            url += keywords;
+        }
+
+
 
         Document doc = c.getData(url);
         Elements e = doc.select("td.woeid");
@@ -40,10 +52,12 @@ public class Weather {
         return woeid;
     }
 
-    public String getWeather() throws IOException {
-        String Searchurl = "http://query.yahooapis.com/v1/public/yql?" +
-                "q=select%20item%20from%20weather.forecast%20" +
-                "where%20woeid=" + woeid + "&format=json&u=c";
+    // 날씨를 가져온다
+    public String getWeather(String woeid) throws IOException {
+        String Searchurl = "https://query.yahooapis.com/v1/public/yql?" +
+                "q=select%20*%20from%20weather.forecast%20where%20woeid%20%3D%20" +
+                woeid +
+                "&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
 
         URL url = new URL(Searchurl);
         URLConnection urlConnection = url.openConnection();

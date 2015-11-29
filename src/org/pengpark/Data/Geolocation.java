@@ -1,4 +1,4 @@
-package org.pengpark.main;
+package org.pengpark.Data;
 
 
 import org.apache.http.*;
@@ -20,6 +20,8 @@ import java.util.Map;
  * Created by pengpark on 2015. 11. 26..
  */
 public class Geolocation {
+
+    // GEO정보를 가져오기 위해 Http 통신을 통해 데이터를 response 받음
 
     public static String Geo () throws IOException {
             Crawling crawling = new Crawling();
@@ -43,10 +45,13 @@ public class Geolocation {
             response = httpClient.execute(httpPost);
             HttpEntity resEntity = response.getEntity();
             String responseData = EntityUtils.toString(resEntity);
+
             return responseData;
     }
 
+        // 야후 woeid를 이용하기 위해 좌표값을 장소로 리턴받음
         public static JSONArray PointsToGeo() throws IOException, ParseException {
+                // 위도 경도 좌표
                 String Points = Geo().replace("{", "").replace("}", "")
                         .replace(":", "")
                         .replace("\n", "")
