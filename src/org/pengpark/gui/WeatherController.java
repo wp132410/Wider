@@ -7,12 +7,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import org.json.simple.JSONArray;
 import org.pengpark.Data.Weather;
 import org.pengpark.Data.WeatherData.WeatherResources;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -28,7 +31,7 @@ public class WeatherController implements Initializable {
     @FXML private Label pubData;
     @FXML private Label city;
     @FXML private Label country;
-
+    @FXML private ImageView WeatherImage;
 
     private JSONArray Data;
     WeatherResources weatherResources;
@@ -49,6 +52,15 @@ public class WeatherController implements Initializable {
             String woeid = w.GetWoeidNumber();
             String weather = w.getWeather(woeid);
 
+            System.out.println(weather);
+
+//            String fa = weatherResources.getTemp();
+//            System.out.println(fa);
+//            int fa = Integer.parseInt(weatherResources.getTemp());
+//            System.out.println(fa);
+//            int ce = (int) ((fa - 32) / 1.8);
+
+
             weatherResources = new WeatherResources(weather);
             weatherResources.setQueries();
 
@@ -58,13 +70,20 @@ public class WeatherController implements Initializable {
             country.setTextAlignment(TextAlignment.CENTER);
             pubData.setTextAlignment(TextAlignment.CENTER);
 
+            if(weatherResources.getCode().equals("11")) {
+                File file = new File("resources/11.jpg");
+                WeatherImage.setImage(new Image(file.toURI().toString()));
+            }
 
             status.setText(weatherResources.getStatus());
-            temp.setText(weatherResources.getTemp());
+            temp.setText(weatherResources.getTemp() + "℃");
             city.setText(weatherResources.getCity());
             country.setText(weatherResources.getCountry());
             pubData.setText(weatherResources.getPubData());
 
+        } catch (NullPointerException e) {
+            temp.setText("Retry");
+            e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         }

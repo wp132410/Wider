@@ -1,6 +1,7 @@
 package org.pengpark.Data;
 
 import com.sun.org.apache.xpath.internal.compiler.Keywords;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 import org.jsoup.nodes.Document;
@@ -24,7 +25,23 @@ public class Weather {
         Crawling c = new Crawling();
 
         JSONObject jsonObject = (JSONObject) Geolocation.PointsToGeo().get(0);
-        String keywords = jsonObject.get("formatted_address").toString().replace(",", "%20");
+        JSONArray address = (JSONArray) jsonObject.get("address_components");
+
+        JSONObject types = (JSONObject)address.get(3);
+        JSONObject types_2 = (JSONObject)address.get(4);
+        JSONObject types_3 = (JSONObject)address.get(5);
+
+
+        String cityName = types.get("short_name").toString();
+        String areaName = types_2.get("short_name").toString();
+        String countryName = types_3.get("short_name").toString();
+
+        String searchwords = (cityName + "," + areaName + "," + countryName);
+
+
+
+        String keywords = searchwords.replace(",", "%20");
+//        System.out.println(cityName);
 
         String url = "http://woeid.rosselliot.co.nz/lookup/";
         String removeKeyword;

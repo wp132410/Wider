@@ -20,6 +20,12 @@ public class WeatherResources {
     private String temp;
     private String status;
     private String pubData;
+    private String code;
+
+    public String getCode() {
+        return code;
+    }
+
     private Map<String, String> astronomy;
 
     public WeatherResources(String query) {
@@ -50,6 +56,10 @@ public class WeatherResources {
         return astronomy;
     }
 
+    public String getQuery() {
+        return query;
+    }
+
     public void setQueries() throws ParseException {
         astronomy = new HashMap<>();
 
@@ -68,13 +78,22 @@ public class WeatherResources {
         this.City = location.get("city").toString();
         this.Country = location.get("country").toString();
 
-        this.temp = condition.get("temp").toString();
+        String temp = condition.get("temp").toString();
+        int fa = Integer.parseInt(temp);
+        int ce = (int) ((fa - 32) / 1.8);
+
+        this.temp = Integer.toString(ce);
+        System.out.println(temp + "도");
         this.status = condition.get("text").toString();
 
         this.pubData = condition.get("date").toString();
 
         this.astronomy.put("sunrise", astronomy.get("sunrise").toString());
         this.astronomy.put("sunset", astronomy.get("sunset").toString());
+
+        this.code = condition.get("code").toString();
+        System.out.println(this.code);
+
     }
 
 }

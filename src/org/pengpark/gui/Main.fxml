@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.shape.*?>
@@ -15,11 +16,23 @@
       </Label>
       <Button layoutX="491.0" layoutY="14.0" mnemonicParsing="false" text="ㅡ" />
       <Button layoutX="538.0" layoutY="14.0" mnemonicParsing="false" text="exit" />
-      <Circle fill="WHITE" layoutX="300.0" layoutY="189.0" radius="58.0" stroke="WHITE" strokeType="INSIDE" />
       <Button fx:id="btnWebtoon" layoutX="444.0" layoutY="274.0" mnemonicParsing="false" onAction="#handleButtonAction" text="webtoon" />
-      <Circle fill="WHITE" layoutX="128.0" layoutY="189.0" radius="58.0" stroke="WHITE" strokeType="INSIDE" />
-      <Circle fill="WHITE" layoutX="480.0" layoutY="189.0" radius="58.0" stroke="WHITE" strokeType="INSIDE" />
       <Button fx:id="btnNews" layoutX="103.0" layoutY="274.0" mnemonicParsing="false" onAction="#handleButtonAction" text="news" />
       <Button fx:id="btnWeather" layoutX="266.0" layoutY="274.0" mnemonicParsing="false" onAction="#handleButtonAction" text="weather" />
+      <ImageView fx:id="weatherImage" fitHeight="110.0" fitWidth="122.0" layoutX="243.0" layoutY="131.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@resources/Sunshine-And-Nutrients.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="116.0" fitWidth="114.0" layoutX="80.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@resources/news_icon.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="110.0" fitWidth="114.0" layoutX="423.0" layoutY="131.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@resources/webtoon.jpeg" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
